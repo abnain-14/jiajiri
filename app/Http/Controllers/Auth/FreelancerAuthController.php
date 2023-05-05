@@ -37,7 +37,8 @@ class FreelancerAuthController extends Controller
 
             return redirect()->intended(RouteServiceProvider::FREE);
 
-        } elseif(Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'consultant'])) {
+        } 
+        elseif(Auth::attempt(['email' => $email, 'password' => $password, 'role' => 'consultant'])) {
             $request->session()->regenerate();
 
             return redirect()->intended(RouteServiceProvider::HOME);

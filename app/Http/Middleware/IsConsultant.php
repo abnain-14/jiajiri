@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Closure;
 use Illuminate\Http\Request;
 
-class IsFreelancer
+class IsConsultant
 {
     /** 
      * Handle an incoming request.
@@ -17,10 +17,10 @@ class IsFreelancer
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->role == "freelancer") {
+        if (Auth::user() &&  Auth::user()->role == "consultant") {
             return $next($request);
         }
 
-        return redirect('/')->with('error', 'You have not freelancer access');
+        return redirect('/')->with('error', 'You have not consultant access');
     }
 }
