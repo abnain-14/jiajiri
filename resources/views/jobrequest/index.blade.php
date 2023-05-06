@@ -1,6 +1,9 @@
 @extends('jobrequest.layout')
 @section('content')
 <div class="card-header">
+    <a href="{{url('/consultanthome')}}" style="color:black;">Home</a>
+    <br>
+    <br>
 <h3>Job Requests</h3></div>
 <br>
 <a href="{{ url('/consultant/jobrequest/create') }}" class="btn btn-success btn-sm" title="Add New Job Request"> Post Job</a>
