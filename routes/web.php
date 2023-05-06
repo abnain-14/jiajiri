@@ -23,6 +23,9 @@ Auth::Routes();
 
 Route::get('/consultanthome', [App\Http\Controllers\ConsultantController::class, 'index'])->name('consultanthome');
 Route::get('/freelancerhome', [App\Http\Controllers\FreelancerController::class, 'index'])->name('freelancerhome');
+Route::get('/consultant/profile',function () {
+    return view('profile.index');
+}) ;
 
 
 require __DIR__ . '/auth.php';
