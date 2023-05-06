@@ -223,8 +223,8 @@
             @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
+     </nav><!-- .navbar -->
+ 
     </div>
   </header><!-- End Header -->
 

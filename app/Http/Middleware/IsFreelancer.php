@@ -21,6 +21,6 @@ class IsFreelancer
             return $next($request);
         }
 
-        return redirect('/')->with('error', 'You have not freelancer access');
+        return redirect('/login')->with('error', 'You have not freelancer access');
     }
 }
