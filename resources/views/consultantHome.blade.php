@@ -58,8 +58,8 @@
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
               </li> --}} 
-                <li><a href="#">Drop Down 3</a></li>
-                <li><a href="#">Drop Down 4</a></li>
+                <li><a href="{{url('/consultant/profile')}}">My Profile</a></li>
+                <!-- <li><a href="#">Drop Down 4</a></li> -->
                 <li> 
                     <a class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault();
