@@ -42,7 +42,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto" href="#">Register Category</a></li>
+          <li><a class="nav-link scrollto" href="{{url('/freelancer/category')}}">Register Category</a></li>
           <li><a class="nav-link scrollto" href="#">Attended Job requests</a></li>
           <li><a class="nav-link scrollto" href="#">Payments</a></li>
            <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i class="bi bi-chevron-down"></i></a>
@@ -58,7 +58,7 @@
                   <li><a href="#">Deep Drop Down 5</a></li>
                 </ul>
               </li> --}} 
-                <li><a href="#">Drop Down 3</a></li>
+                {{-- <li><a href="#">Drop Down 3</a></li> --}}
                 <li><a href="#">Drop Down 4</a></li>
                 <li> 
                     <a class="dropdown-item" href="{{ route('logout') }}"
