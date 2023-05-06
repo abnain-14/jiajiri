@@ -1,10 +1,8 @@
 <?php
 
-use App\Models\JobRequest;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\JobRequestController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,8 +23,10 @@ Auth::Routes();
 
 Route::get('/consultanthome', [App\Http\Controllers\ConsultantController::class, 'index'])->name('consultanthome');
 Route::get('/freelancerhome', [App\Http\Controllers\FreelancerController::class, 'index'])->name('freelancerhome');
+Route::resource("/consultant/jobrequest" , JobRequestController::class);
 Route::get('/consultant/profile',function () {
     return view('profile.index');
 }) ;
+
 
 require __DIR__ . '/auth.php';
