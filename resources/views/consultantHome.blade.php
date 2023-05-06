@@ -43,7 +43,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto" href="#">Find Freelancer</a></li>
-          <li><a class="nav-link scrollto" href="#">Post Job request</a></li>
+          <li><a class="nav-link scrollto" href="{{url('consultant/jobrequest/') }}">Post Job request</a></li>
           <li><a class="nav-link scrollto" href="#">Payments</a></li>
            <li class="dropdown"><a href="#"><span>{{ Auth::user()->name }}</span> <i class="bi bi-chevron-down"></i></a>
             
