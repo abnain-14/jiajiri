@@ -12,11 +12,11 @@ Its just UI
 
 1. Clone GitHub repo for this project locally
 ```
-git clone https://github.com/abnain-14/laravelecommerce
+git clone https://github.com/abnain-14/jiajiri.git
 ```
 2. cd into your project
 ```
-cd laravelecommerce
+cd jiajiri
 ```
 3. Install Composer Dependencies
 ```
