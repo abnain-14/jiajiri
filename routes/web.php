@@ -31,6 +31,9 @@ Route::resource("/freelancer/category" , CategoryController::class);
 Route::get('/consultant/profile',function () {
     return view('profile.index');
 }) ;
+Route::get('/freelancer/profile',function () {
+    return view('profile.freeindex');
+}) ;
 
 
 require __DIR__ . '/auth.php';
