@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\JobRequest;
 
 class FreelancerController extends Controller
 {
@@ -23,6 +24,13 @@ class FreelancerController extends Controller
      */
     public function index()
     {
-        return view('freelancerhome');
+      
+        $jobs = JobRequest::orderBy('created_at', 'desc')->get();
+        return view('freelancerHome')->with('jobs', $jobs);
+    }
+
+    public function show($id){
+        $jobs = JobRequest::where('id', $id)->get();
+        return view('freelancer.viewjob')->with('jobs', $jobs);
     }
 }

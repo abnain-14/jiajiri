@@ -36,4 +36,8 @@ Route::get('/freelancer/profile',function () {
 }) ;
 
 
+Route::resource('/freelancerhome', App\Http\Controllers\FreelancerController::class);
+
+
+
 require __DIR__ . '/auth.php';
