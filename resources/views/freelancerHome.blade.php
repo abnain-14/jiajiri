@@ -96,6 +96,7 @@
     </section><!-- End Hero -->
 
     <main id="main ">
+        <br>
         <div class="container">
             <table class="table m-auto py-4">
                 <thead>
@@ -123,7 +124,7 @@
                 </tbody>
             </table>
         </div>
-
+        <br>
 
 
     </main><!-- End #main -->
