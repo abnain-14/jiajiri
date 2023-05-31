@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("job_title");
             $table->string("amount");
-            $table->string("job_description")->nullable();
+            $table->longText("job_description")->nullable();
             $table->string("job_qualification")->nullable();
             $table->timestamps();
         });

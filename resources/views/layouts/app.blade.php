@@ -1,82 +1,124 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Jiajiri Online</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/mdb.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animations-extended.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
+
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                {{-- <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a> --}}
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar white ">
+            <div class="container ">
+                <div class="float-left mr-2"> </div> <a class="navbar-brand font-weight-bold"
+                    href="#"><strong>JIAJIRI</strong></a> <button class="navbar-toggler" type="button"
+                    data-toggle="collapse" data-target="#navbarSupportedContent-4"
+                    aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation"> <span
+                        class="navbar-toggler-icon"></span> </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
+                    <ul class="navbar-nav ml-auto">
+                        @if (Auth::user())
+                            @if (Auth::user()->role == 'consultant')
+                                <li><a class="nav-link text-dark hoverable" href="#">Find Freelancer</a></li>
+                                <li><a class="nav-link text-dark hoverable" href="#">Payments</a></li>
+                                <li><a class="nav-link text-dark hoverable"
+                                        href="{{ url('consultant/jobrequest/') }}">Post
+                                        Job
+                                        request</a>
                                 </li>
-                                
+                            @elseif(Auth::user()->role == 'freelancer')
+                                <li><a class="nav-link text-dark hoverable"
+                                        href="{{ url('/freelancer/category') }}">Register
+                                        Category</a>
+                                </li>
+                                <li><a class="nav-link text-dark hoverable" href="#">Attended Job requests</a>
+                                </li>
+                                <li><a class="nav-link text-dark hoverable" href="#">Payments</a></li>
                             @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+
+
+                        @endif
+                        <li class="nav-item dropdown ml-3">
+                            @if (Auth::user())
+                                <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold text-dark"
+                                    id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false"><i class="fas fa-user text-dark"></i>
                                     {{ Auth::user()->name }}
                                 </a>
-                                
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    {{-- <a class="dropdown-item" href="">profile</a> --}}
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @else
+                                <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold text-dark"
+                                    id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false"><i class="fas fa-user text-dark"></i> Profile </a>
+                            @endif
+                            <div class="dropdown-menu dropdown-menu-right dropdown-cyan"
+                                aria-labelledby="navbarDropdownMenuLink-4">
+                                @if (Auth::user())
+                                    @if (Auth::user()->role == 'consultant')
+                                        <a class="dropdown-item waves-effect waves-light" href="/consultant/profile">My
+                                            account</a>
+                                    @elseif(Auth::user()->role == 'freelancer')
+                                        <a class="dropdown-item waves-effect waves-light" href="/freelancer/profile">My
+                                            account</a>
+                                    @endif
+                                    <a class="dropdown-item waves-effect waves-light" href="{{ route('logout') }} "
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                                    <form id="logout-form" action="/logout" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                </div>
-                            </li>
-                        @endguest
+                                @else
+                                    <a class="dropdown-item waves-effect waves-light"
+                                        href="{{ route('login') }}">Login</a>
+                                @endif
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
+    </header>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+
+    @yield('content')
+
+
+
+    <footer class=" text-center text-md-left  pt-0 ">
+        <div class="footer-copyright py-3 text-center">
+            <div class="container-fluid"> © 2023 Jiajiri. </a> </div>
+        </div>
+    </footer>
+
+    <script src="{{ asset('js/admin.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/mdb.min.js') }}"></script>
+    <script>
+        new WOW().init();
+        $(document).ready(function() {
+            $('.mdb-select').materialSelect();
+        });
+    </script>
+
+    <script>
+        $(".button-collapse").sideNav();
+        var container = document.querySelector(".custom-scrollbar");
+        var ps = new PerfectScrollbar(container, {
+            wheelSpeed: 2,
+            wheelPropagation: true,
+            minScrollbarLength: 20,
+        });
+        $("#btnTopLeft").on("click");
+    </script>
 </body>
+
 </html>

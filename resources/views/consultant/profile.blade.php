@@ -1,0 +1,234 @@
+@extends('layouts.app')
+
+
+@section('content')
+    <div class="m-5 mx-auto pt-3 col-md-10">
+        <section class="pb-5">
+            <div class=" mt-5 mb-5">
+                <div class="">
+                    <div class="">
+
+                        <ul class="nav md-tabs nav-justified grey lighten-3 mx-0" role="tablist">
+
+                            <li class="nav-item">
+
+                                <a class="nav-link active dark-grey-text font-weight-bold" data-toggle="tab" href="#panel1"
+                                    role="tab"> Profile</a>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link dark-grey-text font-weight-bold" data-toggle="tab" href="#panel2"
+                                    role="tab">
+                                    My Jobrequest posts</a>
+                            </li>
+
+
+                            <li class="nav-item">
+
+                                <a class="nav-link dark-grey-text font-weight-bold" data-toggle="tab" href="#panel3"
+                                    role="tab">
+                                    </i>Password </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="tab-content card shadow-box-example z-depth-5 " style="margin-top: 20px">
+
+                <div class="tab-pane fade in show active animated zoomIn" id="panel1" role="tablist">
+
+                    <div class="">
+
+                        <div class="col-md-5 mx-auto text-center">
+                            @if (Auth::user()->profile_pic)
+                                <img style="width: 70px; height: 70px" class="rounded-circle"
+                                    src="/storage/profile_pics/{{ Auth::user()->profile_pic }}" alt=""
+                                    srcset=""> <br>
+                            @else
+                                <img style="width: 70px; height: 70px" class="rounded-circle"
+                                    src="{{ url('images/user.jpg') }}" alt="" srcset=""> <br>
+                            @endif
+                            <p class="fw-bold mb-3 py-2">{{ Auth::user()->name }}</p>
+
+                            <span class="fw-bold  badge badge-success">{{ Auth::user()->role }}</span>
+                            <br>
+
+                            <div class="form-group">
+                                {!! Form::open([
+                                    'action' => ['App\Http\Controllers\Consultant\ProfileController@update', Auth::user()->id],
+                                    'method' => 'POST',
+                                    'enctype' => 'multipart/form-data',
+                                ]) !!}
+
+                                {{ Form::file('profile_pic', ['style' => 'font-size:12px']) }}
+                                {{ Form::hidden('_method', 'PUT') }}
+                                {{ Form::submit('UPLOAD', ['class' => 'btn btn-sm btn-primary']) }}
+                                {!! Form::close() !!}
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="col-md-10 mx-auto">
+                            {!! Form::open([
+                                'action' => ['App\Http\Controllers\Consultant\ProfileController@update', Auth::user()->id],
+                                'method' => 'POST',
+                            ]) !!}
+
+                            <div class="row">
+                                <div class="col">
+                                    {{ Form::label('username', 'Username') }}
+                                    {{ Form::text('username', Auth::user()->name, ['class' => 'form-control', 'plcaholder' => 'Username']) }}
+
+                                </div>
+                                <div class="col">
+                                    {{ Form::label('email', 'Email') }}
+                                    {{ Form::email('email', Auth::user()->email, ['class' => 'form-control', 'plcaholder' => 'Email']) }}
+                                </div>
+
+                                <div class="col">
+                                    {{ Form::label('phone', 'Phone') }}
+                                    {{ Form::text('phone', Auth::user()->phone, ['class' => 'form-control', 'plcaholder' => 'Email']) }}
+                                </div>
+
+                            </div>
+                            <br>
+                            <br>
+                            {{ Form::hidden('_method', 'PUT') }}
+                            {{ Form::submit('Update', ['class' => 'btn btn-sm btn-primary']) }}
+                            {!! Form::close() !!}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="panel2" role="tabpanel">
+                    @if (count($jobrequest) == 0)
+                        <div class="dark-grey-text d-flex  align-items-center pt-3 pb-4 pl-4 ">
+                            <div class="mx-auto">
+
+                                <h4 class="m-4 ">No Jobrequest posts</h4>
+
+                            </div>
+                        </div>
+                    @else
+                        <section>
+                            <h5 class="my-2 dark-grey-text font-weight-bold">My Jobrequest Posts</h5>
+
+                            <div class="card card-cascade narrower z-depth-1">
+                                <div
+                                    class="view view-cascade gradient-card-header blue-gradient narrower p-2 mx-4 my-3 d-flex justify-content-between align-items-center">
+                                    <a href="" class="white-text mx-3">Jobrequests</a>
+
+                                    {{-- <form class="form-outline md-form  row ml-auto " style="width: 50%">
+                                    <input class="form-control  col-md-9" type="text" placeholder="Search"
+                                        style="">
+                                    <button class="btn  ml-3" tyle="background-color:transparent"><i
+                                            class="fas fa-search"></i> </button>
+                                </form> --}}
+                                </div>
+
+
+                                <div class="px-4">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover mb-1">
+                                            <thead>
+                                                <tr>
+                                                    <th class="th-lg"><strong>#<i class=""></strong></th>
+                                                    <th class="th-lg"><strong>Job Title<i class=""></strong></th>
+                                                    <th class="th-lg"><strong>Estimated Amount<i class=""></strong>
+                                                    </th>
+                                                    <th class="th-lg"><strong>Job Description<i class=""></strong>
+                                                    </th>
+                                                    <th class="th-lg"><strong>Job qualification<i class=""></strong>
+                                                    </th>
+
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($jobrequest as $item)
+                                                    <tr>
+
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $item->job_title }}</td>
+                                                        <td>{{ $item->amount }} TZS</td>
+                                                        <td>{{ $item->job_description }}</td>
+                                                        <td>{{ $item->job_qualification }}</td>
+
+                                                        <td> {!! Form::open([
+                                                            'url' => ['App\Http\Controllers\Consultant\ProfilePController@user_release', $item->id],
+                                                            'method' => 'POST',
+                                                        ]) !!}
+                                                            {{ Form::hidden('_method', 'PUT') }}
+                                                            {{ Form::submit('edit', ['class' => 'btn btn-sm btn-primary']) }}
+                                                            {!! Form::close() !!}
+                                                        </td>
+                                                        <td>{!! Form::open([
+                                                            'url' => ['App\Http\Controllers\Consultant\ProfilePController@user_release', $item->id],
+                                                            'method' => 'POST',
+                                                        ]) !!}
+                                                            {{ Form::hidden('_method', 'PUT') }}
+                                                            {{ Form::submit('delete', ['class' => 'btn btn-sm btn-danger']) }}
+                                                            {!! Form::close() !!}
+                                                        </td>
+
+
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </section>
+                    @endif
+                </div>
+
+
+                <div class="tab-pane fade col-md-9 mx-auto" id="panel3" role="tabpanel">
+
+
+                    <form method="POST" action="{{ route('password.update') }}">
+                        @csrf
+                        <div class="row">
+                            <div class="col">
+                                <label for="password" :value="__('Password')">Password</label>
+
+                                <input id="password" class="form-control" type="password" name="password" required />
+                            </div>
+
+
+                            <div class="col">
+                                <label for="password_confirmation" :value="__('Confirm Password')">Confirm
+                                    Password</label>
+
+                                <input id="password_confirmation" class="form-control" type="password"
+                                    name="password_confirmation" required />
+                            </div>
+                        </div>
+
+
+
+                        <div class="flex items-center justify-end mt-4">
+                            <button class="btn btn-sm btn-primary">
+                                {{ __('Reset Password') }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+
+
+            </div>
+        </section>
+    </div>
+@endsection

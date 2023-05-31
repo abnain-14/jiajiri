@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('category', function (Blueprint $table) {
             $table->id();
-            $table->string('name_of_expertise');
+            $table->string('name_of_expertise')->nullable();
             $table->string('years_of_experience')->nullable();
             $table->string('category');
             $table->timestamps();
