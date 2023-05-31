@@ -18,30 +18,38 @@
     <header>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar white ">
             <div class="container ">
-                <div class="float-left mr-2"> </div> <a class="navbar-brand font-weight-bold"
-                    href="#"><strong>JIAJIRI</strong></a> <button class="navbar-toggler" type="button"
-                    data-toggle="collapse" data-target="#navbarSupportedContent-4"
-                    aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation"> <span
-                        class="navbar-toggler-icon"></span> </button>
+                <div class="float-left mr-2"> </div>
+                @if (Auth::user())
+                    @if (Auth::user()->role == 'consultant')
+                    <a class="navbar-brand font-weight-bold" href="/consultant"><strong>JIAJIRI</strong></a>
+                    @elseif(Auth::user()->role == 'freelancer')
+                    <a class="navbar-brand font-weight-bold" href="/freelancer"><strong>JIAJIRI</strong></a>
+                    @endif
+                @endif
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4"
+                    aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
                     <ul class="navbar-nav ml-auto">
                         @if (Auth::user())
                             @if (Auth::user()->role == 'consultant')
-                                <li><a class="nav-link text-dark hoverable" href="#">Find Freelancer</a></li>
-                                <li><a class="nav-link text-dark hoverable" href="#">Payments</a></li>
-                                <li><a class="nav-link text-dark hoverable"
+                                <li><a class="nav-link dark-grey-text font-weight-bold hoverable" href="#">Find Freelancer</a></li>
+                                <li><a class="nav-link dark-grey-text font-weight-bold hoverable" href="#">Payments</a></li>
+                                <li><a class="nav-link dark-grey-text font-weight-bold hoverable"
                                         href="{{ url('consultant/jobrequest/') }}">Post
                                         Job
                                         request</a>
                                 </li>
                             @elseif(Auth::user()->role == 'freelancer')
-                                <li><a class="nav-link text-dark hoverable"
+                                <li><a class="nav-link dark-grey-text font-weight-bold hoverable"
                                         href="{{ url('/freelancer/category') }}">Register
                                         Category</a>
                                 </li>
-                                <li><a class="nav-link text-dark hoverable" href="#">Attended Job requests</a>
+                                <li><a class="nav-link dark-grey-text font-weight-bold hoverable" href="#">Attended Job requests</a>
                                 </li>
-                                <li><a class="nav-link text-dark hoverable" href="#">Payments</a></li>
+                                <li><a class="nav-link dark-grey-text font-weight-bold hoverable" href="#">Payments</a></li>
                             @endif
 
 

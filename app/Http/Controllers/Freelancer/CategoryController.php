@@ -3,17 +3,18 @@
 namespace App\Http\Controllers\Freelancer;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-use PhpParser\Node\Stmt\Catch_;
+
 
 class CategoryController extends Controller
 {
 
     public function index()
     {
-        $category = Category::all();
+        $category = Category::where('user_id', Auth::user()->id)->get();
         return view('freelancer.category.index')->with('category', $category);
     }
 
@@ -26,8 +27,12 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
-        $input = $request->all();
-        Category::create($input);
+        $category = new Category;
+        $category->user_id = Auth::user()->id;
+        $category->name_of_expertise = $request->input('name_of_expertise');
+        $category->years_of_experience = $request->input('years_of_experience');
+        $category->category = $request->input('category');
+        $category->save();
         return redirect('/freelancer/category')->with('flash_message', 'Category Added!');
     }
 
@@ -49,8 +54,11 @@ class CategoryController extends Controller
     public function update(Request $request, string $id)
     {
         $category = Category::find($id);
-        $input = $request->all();
-        $category->update($input);
+        $category->user_id = Auth::user()->id;
+        $category->name_of_expertise = $request->input('name_of_expertise');
+        $category->years_of_experience = $request->input('years_of_experience');
+        $category->category = $request->input('category');
+        $category->save();
         return redirect('/freelancer/category')->with('flash_message', 'Category Updated!');
     }
 

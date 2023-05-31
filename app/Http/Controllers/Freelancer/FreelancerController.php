@@ -24,7 +24,7 @@ class FreelancerController extends Controller
     }
 
     public function show($id){
-        $jobs = JobRequest::where('id', $id)->get();
-        return view('freelancer.viewjob')->with('jobs', $jobs);
+        $job = JobRequest::find($id);
+        return view('freelancer.viewjob')->with('job', $job);
     }
 }

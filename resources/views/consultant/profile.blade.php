@@ -17,12 +17,6 @@
                             </li>
 
 
-                            <li class="nav-item">
-                                <a class="nav-link dark-grey-text font-weight-bold" data-toggle="tab" href="#panel2"
-                                    role="tab">
-                                    My Jobrequest posts</a>
-                            </li>
-
 
                             <li class="nav-item">
 
@@ -62,7 +56,7 @@
 
                             <div class="form-group">
                                 {!! Form::open([
-                                    'action' => ['App\Http\Controllers\Consultant\ProfileController@update', Auth::user()->id],
+                                    'action' => ['App\Http\Controllers\Consultant\ConsultantProfileController@update', Auth::user()->id],
                                     'method' => 'POST',
                                     'enctype' => 'multipart/form-data',
                                 ]) !!}
@@ -79,7 +73,7 @@
 
                         <div class="col-md-10 mx-auto">
                             {!! Form::open([
-                                'action' => ['App\Http\Controllers\Consultant\ProfileController@update', Auth::user()->id],
+                                'action' => ['App\Http\Controllers\Consultant\ConsultantProfileController@update', Auth::user()->id],
                                 'method' => 'POST',
                             ]) !!}
 
@@ -109,89 +103,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="panel2" role="tabpanel">
-                    @if (count($jobrequest) == 0)
-                        <div class="dark-grey-text d-flex  align-items-center pt-3 pb-4 pl-4 ">
-                            <div class="mx-auto">
-
-                                <h4 class="m-4 ">No Jobrequest posts</h4>
-
-                            </div>
-                        </div>
-                    @else
-                        <section>
-                            <h5 class="my-2 dark-grey-text font-weight-bold">My Jobrequest Posts</h5>
-
-                            <div class="card card-cascade narrower z-depth-1">
-                                <div
-                                    class="view view-cascade gradient-card-header blue-gradient narrower p-2 mx-4 my-3 d-flex justify-content-between align-items-center">
-                                    <a href="" class="white-text mx-3">Jobrequests</a>
-
-                                    {{-- <form class="form-outline md-form  row ml-auto " style="width: 50%">
-                                    <input class="form-control  col-md-9" type="text" placeholder="Search"
-                                        style="">
-                                    <button class="btn  ml-3" tyle="background-color:transparent"><i
-                                            class="fas fa-search"></i> </button>
-                                </form> --}}
-                                </div>
-
-
-                                <div class="px-4">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover mb-1">
-                                            <thead>
-                                                <tr>
-                                                    <th class="th-lg"><strong>#<i class=""></strong></th>
-                                                    <th class="th-lg"><strong>Job Title<i class=""></strong></th>
-                                                    <th class="th-lg"><strong>Estimated Amount<i class=""></strong>
-                                                    </th>
-                                                    <th class="th-lg"><strong>Job Description<i class=""></strong>
-                                                    </th>
-                                                    <th class="th-lg"><strong>Job qualification<i class=""></strong>
-                                                    </th>
-
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($jobrequest as $item)
-                                                    <tr>
-
-                                                        <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->job_title }}</td>
-                                                        <td>{{ $item->amount }} TZS</td>
-                                                        <td>{{ $item->job_description }}</td>
-                                                        <td>{{ $item->job_qualification }}</td>
-
-                                                        <td> {!! Form::open([
-                                                            'url' => ['App\Http\Controllers\Consultant\ProfilePController@user_release', $item->id],
-                                                            'method' => 'POST',
-                                                        ]) !!}
-                                                            {{ Form::hidden('_method', 'PUT') }}
-                                                            {{ Form::submit('edit', ['class' => 'btn btn-sm btn-primary']) }}
-                                                            {!! Form::close() !!}
-                                                        </td>
-                                                        <td>{!! Form::open([
-                                                            'url' => ['App\Http\Controllers\Consultant\ProfilePController@user_release', $item->id],
-                                                            'method' => 'POST',
-                                                        ]) !!}
-                                                            {{ Form::hidden('_method', 'PUT') }}
-                                                            {{ Form::submit('delete', ['class' => 'btn btn-sm btn-danger']) }}
-                                                            {!! Form::close() !!}
-                                                        </td>
-
-
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </section>
-                    @endif
-                </div>
+          
 
 
                 <div class="tab-pane fade col-md-9 mx-auto" id="panel3" role="tabpanel">

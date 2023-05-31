@@ -33,12 +33,17 @@ Route::get('/', function () {
 
 Auth::Routes();
 
-Route::get('/consultanthome', [ConsultantController::class, 'index'])->name('consultanthome');
-Route::get('/freelancerhome', [FreelancerController::class, 'index'])->name('freelancerhome');
+Route::get('/consultant', [ConsultantController::class, 'index'])->name('consultant');
+Route::get('/freelancer', [FreelancerController::class, 'index'])->name('freelancer');
 Route::resource("/freelancer/category" , CategoryController::class);
 Route::resource("/consultant/jobrequest" , JobRequestController::class);
 Route::resource("/consultant/profile" , ConsultantProfileController::class);
 Route::resource("/freelancer/profile" , FreelancerProfileController::class);
+Route::get('/freelancer/viewjob/{id}', [FreelancerController::class, 'show']);
+Route::get('/consultant/viewlancer/{id}', [ConsultantController::class, 'show']);
+
+
+
 
 
 require __DIR__ . '/auth.php';

@@ -17,80 +17,52 @@
             <section class="">
                 <div class="row">
                     <div class="col-12 ">
+
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 mb-4">
-                                <div class="card card-ecommerce">
-                                    <div class="row">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <div class="view overlay">
-                                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg"
-                                                    class="img-fluid" alt="">
-                                                <a>
-                                                    <div class="mask rgba-white-slight"></div>
-                                                </a>
-                                            </div>
-                                        </div>
+                            @if (count($category) > 0)
+                                @foreach ($category as $category)
+                                @php 
+                                    $user = \App\Models\User::where('id', $category->user_id)->first();
+                                    $name = $user->name
+                                @endphp
+                                    <div class="col-lg-6 col-md-6 mb-4">
+                                        <div class="card card-ecommerce">
+                                            <div class="">
+                                                <div class="col-12 pl-0 ml-3">
+                                                    <div class="card-body">
+                                                        <h3 class="card-title mb-3"><strong><a href=""
+                                                                    class="dark-grey-text">{{ $name }}</a></strong>
+                                                        </h3>
 
-
-                                        <div class="col-6 pl-0">
-                                            <div class="card-body">
-                                                <h5 class="card-title mb-1"><strong><a href=""
-                                                            class="dark-grey-text">Web Development</a></strong></h5>
-
-
-
-                                                <span class="badge badge-danger mb-3">bestseller</span>
-                                                <div class="card-footer pb-0">
-                                                    <div class="row">
-                                                        <span class="float-left mt-3"><strong>2339$</strong></span>
-                                                        <span class="float-right ml-auto">
-                                                            <a class="btn btn-sm btn-primary text-dark">view</a>
+                                                        <h5 class="card-title mb-1"><strong><a href=""
+                                                                    class="dark-grey-text">{{ $category->name_of_expertise }}</a></strong>
+                                                        </h5>
+                                                        <span
+                                                            class="badge badge-primary mb-3 p-1 mt-2">{{ $category->category }}
                                                         </span>
+                                                        <span
+                                                            class="badge badge-success mb-3 p-1 mt-2">{{ $category->years_of_experience }}
+                                                            Years of experience</span>
+
+                                                        <div class="card-footer pb-0">
+                                                            <div class="row">
+                                                                <span
+                                                                    class="float-left mt-3"><small>{{ $category->created_at->diffForHumans() }}</small></span>
+                                                                <span class="float-right ml-auto">
+                                                                    <a class="btn btn-sm btn-primary text-dark"
+                                                                        href="/consultant/viewlancer/{{ $category->id }}">view</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-
-
-                            <div class="col-lg-6 col-md-6 mb-4">
-                                <div class="card card-ecommerce">
-                                    <div class="row">
-                                        <div class="col-4 d-flex align-items-center">
-                                            <div class="view overlay">
-                                                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/14.jpg"
-                                                    class="img-fluid" alt="">
-                                                <a>
-                                                    <div class="mask rgba-white-slight"></div>
-                                                </a>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-6 pl-0">
-                                            <div class="card-body">
-                                                <h5 class="card-title mb-1"><strong><a href=""
-                                                            class="dark-grey-text">Web Development</a></strong></h5>
-
-
-
-                                                <span class="badge badge-danger mb-3">bestseller</span>
-                                                <div class="card-footer pb-0">
-                                                    <div class="row">
-                                                        <span class="float-left mt-3"><strong>2339$</strong></span>
-                                                        <span class="float-right ml-auto">
-                                                            <a class="btn btn-sm btn-primary text-dark">view</a>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                @endforeach
+                            @else
+                                <h4 class="my-4 pt-5 text-center dark-grey-text font-weight-bold mx-auto">Nothing to show here</h4>
+                            @endif
                         </div>
                     </div>
             </section>

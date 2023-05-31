@@ -48,8 +48,6 @@
 
 
 
-
-
 @extends('layouts.app')
 
 @section('content')
@@ -60,8 +58,11 @@
                 <h5 class="my-4 dark-grey-text font-weight-bold">Categories</h5>
             </div>
             <div class="col-md-2"> <a href="{{ url('/freelancer/category/create') }}"
-                    class="btn btn-primary btn-sm float-right mt-4" title="register">Register</a></div>
+                    class="btn btn-primary btn-sm float-right mt-4" title="register">Add</a></div>
         </div>
+
+
+        @if (count($category) > 0)
 
 
         <div class="card card-cascade narrower z-depth-1 mt-4">
@@ -76,10 +77,10 @@
                     <table class="table table-hover mb-1">
                         <thead>
                             <tr>
-                                <th class="th-lg"><strong>#</th></strong>
-                                <th class="th-lg"><strong>Name of Expertise</th></strong>
-                                <th class="th-lg"><strong>Years of Experience</th></strong>
-                                <th class="th-lg"><strong>Category</th></strong>
+                                <th class="w-auto"><strong>#</th></strong>
+                                <th class="w-auto"><strong>Expertise</th></strong>
+                                <th class="w-auto"><strong>Experience</th></strong>
+                                <th class="w-auto"><strong>Category</th></strong>
                             </tr>
                         </thead>
                         <tbody>
@@ -87,37 +88,37 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $item->name_of_expertise }}</td>
-                                    <td>{{ $item->years_of_experience }}</td>
+                                    <td>{{ $item->years_of_experience }} Years</td>
                                     <td>{{ $item->category }}</td>
 
                                     <td><a href="{{ url('/freelancer/category/' . $item->id . '/edit') }}"
                                             class="btn btn-sm btn-primary">edit</a>
                                     </td>
                                     <td>
-                                    <td> <a href="#deleteUserModal" class="btn btn-sm btn-danger" data-toggle="modal">
+                                    <td> <a href="#deleteCategoryModal{{$item->id}}" class="btn btn-sm btn-danger" data-toggle="modal">
                                             DELETE
                                             </i></a>
                                     </td>
 
                                 </tr>
-                                <div id="deleteUserModal" class="modal fade">
+                                <div id="deleteCategoryModal{{$item->id}}" class="modal fade">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
 
                                             <div class="modal-header">
-                                                <h4 class="modal-title">Delete User</h4>
+                                                <h4 class="modal-title">Delete Job Category</h4>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-hidden="true">&times;</button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Are you sure you want to delete this user?</p>
+                                                <p>Are you sure you want to delete this category?</p>
                                                 <p class="text-warning"><small>This action cannot be undone.</small></p>
                                             </div>
                                             <div class="modal-footer">
                                                 <input type="button" class="btn btn-sm btn-default" data-dismiss="modal"
                                                     value="Cancel">
                                                 {!! Form::open([
-                                                    'url' => ['App\Http\Controllers\Freelancer\CategoryController@update', $item->id],
+                                                    'url' => ['App\Http\Controllers\Freelancer\JobRequestController@destroy', $item->id],
                                                     'method' => 'POST',
                                                 ]) !!}
                                                 {{ Form::hidden('_method', 'DELETE') }}
@@ -136,5 +137,9 @@
 
             </div>
         </div>
+
+        @else 
+            <h4 class="my-4 pt-5 text-center dark-grey-text font-weight-bold">No Job Categories Created</h4>
+        @endif
     </section>
 @endsection

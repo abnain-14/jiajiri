@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
+use App\Models\Category;
+
 class ConsultantController extends Controller
 {
   
@@ -16,6 +18,13 @@ class ConsultantController extends Controller
 
     public function index()
     {
-        return view('consultant.home');
+        $category = Category::all();
+        return view('consultant.home')->with('category', $category);
+    }
+
+    public function show($id)
+    {
+        $category = Category::find($id);
+        return view('consultant.viewlancer')->with('category', $category);
     }
 }

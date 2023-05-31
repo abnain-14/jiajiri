@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('freeprofile', function (Blueprint $table) {
-            $table->id();
-            $table->string('about_me');
-            $table->string('resume');
-            $table->string('contact');
-            $table->timestamps();
+        Schema::table('category', function (Blueprint $table) {
+            $table->string('user_id')->nullable();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('freeprofile');
+        Schema::table('category', function (Blueprint $table) {
+            Schema::dropIfExists('user_id');
+        });
     }
 };

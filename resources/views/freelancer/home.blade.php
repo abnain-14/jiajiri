@@ -49,33 +49,41 @@
             </div>
         </nav>
     </div>
-    <div class="m-5 mt-2 pt-2 col-md-10 mx-auto">
-        <section class="pb-5">
-            <section class="">
-                <div class=" mb-4">
-                 @foreach ($jobs as $job)
-                    <div class="card card-ecommerce hoverable mb-4">
-                        <div class="row">
-                            <div class="col-12 pl-4">
-                                <div class="card-body">
-                                    <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">{{ $job->job_title }}</a></strong></h5>
-                                    <p class="mt-3">{{ $job->job_description }}</p>
+    @if (count($jobs))
+        <div class="m-5 mt-2 pt-2 col-md-10 mx-auto">
+            <section class="pb-5">
+                <section class="">
+                    <div class=" mb-4">
+                        @foreach ($jobs as $job)
+                            <div class="card card-ecommerce hoverable mb-4">
+                                <div class="row">
+                                    <div class="col-12 pl-4">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-1"><strong><a href=""
+                                                        class="dark-grey-text">{{ $job->job_title }}</a></strong></h5>
+                                            <p class="mt-3">{{ $job->job_description }}</p>
 
-                                    <div class="card-footer pb-0">
-                                        <div class="row">
-                                            <span class="float-left mt-3">{{ $job->created_at->diffForHumans() }}</span>
-                                            <span class="float-right ml-auto">
-                                                <a class="btn btn-sm btn-primary text-dark">view</a>
-                                            </span>
+
+                                            <div class="card-footer pb-0">
+                                                <div class="row">
+                                                    <span
+                                                        class="float-left mt-3">{{ $job->created_at->diffForHumans() }}</span>
+                                                    <span class="float-right ml-auto">
+                                                        <a href="/freelancer/viewjob/{{ $job->id }}"
+                                                            class="btn btn-sm btn-primary text-dark">view</a>
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
-                    @endforeach
-                </div>
+                </section>
             </section>
-        </section>
-    </div>
+        </div>
+    @else
+        <h4 class="my-4 pt-5 text-center dark-grey-text font-weight-bold mx-auto">Nothing to show here</h4>
+    @endif
 @endsection
