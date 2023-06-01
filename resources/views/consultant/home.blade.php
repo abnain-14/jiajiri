@@ -20,37 +20,37 @@
 
                         <div class="row">
                             @if (count($category) > 0)
-                                @foreach ($category as $category)
-                                @php 
-                                    $user = \App\Models\User::where('id', $category->user_id)->first();
-                                    $name = $user->name
-                                @endphp
-                                    <div class="col-lg-6 col-md-6 mb-4">
-                                        <div class="card card-ecommerce">
+                                @foreach ($category as $categor)
+                                    @php
+                                        $user = \App\Models\User::where('id', $categor->user_id)->first();
+                                        $name = $user->name;
+                                    @endphp
+                                    <div class="col-lg-6 col-md-6 mb-4 ">
+                                        <div class="card card-ecommerce hoverable">
                                             <div class="">
                                                 <div class="col-12 pl-0 ml-3">
                                                     <div class="card-body">
-                                                        <h3 class="card-title mb-3"><strong><a href=""
-                                                                    class="dark-grey-text">{{ $name }}</a></strong>
-                                                        </h3>
+                                                        <h4 class="card-title mb-3"><strong><a href=""
+                                                                    class="blue-text">{{ $name }}</a></strong>
+                                                        </h4>
 
-                                                        <h5 class="card-title mb-1"><strong><a href=""
-                                                                    class="dark-grey-text">{{ $category->name_of_expertise }}</a></strong>
-                                                        </h5>
+                                                        <h6 class="card-title mb-1"><a href=""
+                                                                class="dark-grey-text">{{ $categor->name_of_expertise }}</a>
+                                                        </h6>
                                                         <span
-                                                            class="badge badge-primary mb-3 p-1 mt-2">{{ $category->category }}
+                                                            class="badge badge-primary mb-3 p-1 mt-2">{{ $categor->category }}
                                                         </span>
                                                         <span
-                                                            class="badge badge-success mb-3 p-1 mt-2">{{ $category->years_of_experience }}
+                                                            class="badge badge-success mb-3 p-1 mt-2">{{ $categor->years_of_experience }}
                                                             Years of experience</span>
 
                                                         <div class="card-footer pb-0">
                                                             <div class="row">
                                                                 <span
-                                                                    class="float-left mt-3"><small>{{ $category->created_at->diffForHumans() }}</small></span>
+                                                                    class="float-left mt-3"><small>{{ $categor->created_at->diffForHumans() }}</small></span>
                                                                 <span class="float-right ml-auto">
                                                                     <a class="btn btn-sm btn-primary text-dark"
-                                                                        href="/consultant/viewlancer/{{ $category->id }}">view</a>
+                                                                        href="/consultant/viewlancer/{{ $categor->id }}">view</a>
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -60,8 +60,12 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                <div class="py-4 mx-auto" style="margin-left: 20px">
+                                    {{ $category->links('pagination::bootstrap-4') }}
+                                </div>
                             @else
-                                <h4 class="my-4 pt-5 text-center dark-grey-text font-weight-bold mx-auto">Nothing to show here</h4>
+                                <h4 class="my-4 pt-5 text-center dark-grey-text font-weight-bold mx-auto">Nothing to show
+                                    here</h4>
                             @endif
                         </div>
                     </div>

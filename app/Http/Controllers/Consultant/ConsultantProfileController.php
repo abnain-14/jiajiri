@@ -45,9 +45,7 @@ class ConsultantProfileController extends Controller
 
 
 
-    public function edit(Portion $portion)
-    {
-    }
+   
 
 
     public function update(Request $request, $id)

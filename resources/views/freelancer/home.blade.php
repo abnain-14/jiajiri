@@ -1,40 +1,3 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-    <br>
-    <div class="container">
-        <table class="table m-auto py-4">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Job Title</th>
-                    <th scope="col">Job Description</th>
-                    <th scope="col">Job Qualified</th>
-                    <th scope="col">Job Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($jobs as $job)
-                    <tr>
-
-                        <td>{{ $job->id }}</td>
-                        <td>{{ $job->job_title }}</td>
-                        <td><a href="/freelancerhome/{{ $job->id }}">{{ $job->job_description }}</a></td>
-                        <td>{{ $job->job_qualification }}</td>
-                        <td>{{ $job->amount }}</td>
-                    </tr>
-                @endforeach
-
-            </tbody>
-        </table>
-    </div>
-    <br>
-@endsection --}}
-
-
-
-
-
 @extends('layouts.app')
 
 @section('content')
@@ -50,24 +13,30 @@
         </nav>
     </div>
     @if (count($jobs))
-        <div class="m-5 mt-2 pt-2 col-md-10 mx-auto">
+        <div class="m-5 mt-2 pt-2 col-md-10 mx-auto ">
             <section class="pb-5">
                 <section class="">
                     <div class=" mb-4">
                         @foreach ($jobs as $job)
+                            @php
+                                $user = \App\Models\User::where('id', $job->user_id)->first();
+                            @endphp
                             <div class="card card-ecommerce hoverable mb-4">
                                 <div class="row">
                                     <div class="col-12 pl-4">
                                         <div class="card-body">
-                                            <h5 class="card-title mb-1"><strong><a href=""
-                                                        class="dark-grey-text">{{ $job->job_title }}</a></strong></h5>
+                                            <h5 class="card-title mb-2"><strong><a href=""
+                                                        class="blue-text">{{ $job->job_title }}</a></strong></h5>
+                                            <h5><span class="badge grey mt-2">Posted by: {{ $user->name }}</span><span
+                                                    class="badge grey mt-2 m-2">Amount: {{ $job->amount }}</span>
+                                            </h5>
                                             <p class="mt-3">{{ $job->job_description }}</p>
 
 
                                             <div class="card-footer pb-0">
                                                 <div class="row">
                                                     <span
-                                                        class="float-left mt-3">{{ $job->created_at->diffForHumans() }}</span>
+                                                        class="float-left mt-3"><small>{{ $job->created_at->diffForHumans() }}</small></span>
                                                     <span class="float-right ml-auto">
                                                         <a href="/freelancer/viewjob/{{ $job->id }}"
                                                             class="btn btn-sm btn-primary text-dark">view</a>
@@ -79,6 +48,9 @@
                                 </div>
                             </div>
                         @endforeach
+                        <div class="py-4 mx-auto" style="margin-left: 20px">
+                            {{ $jobs->links('pagination::bootstrap-4') }}
+                        </div>
                     </div>
                 </section>
             </section>

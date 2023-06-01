@@ -18,7 +18,7 @@ class ConsultantController extends Controller
 
     public function index()
     {
-        $category = Category::all();
+        $category = Category::paginate(4);
         return view('consultant.home')->with('category', $category);
     }
 

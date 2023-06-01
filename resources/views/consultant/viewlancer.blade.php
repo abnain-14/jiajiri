@@ -5,8 +5,8 @@
         $user = \App\Models\User::where('id', $category->user_id)->first();
         $name = $user->name;
     @endphp
-    <section class="col-md-9 pt-5 mt-5 mx-auto">
-        <div class="card mt-2 hoverable">
+    <section class="col-md-9 pt-5 pb-5 mt-5 mx-auto">
+        <div class="card mt-2 hoverable  z-depth-2">
             <div class="m-3">
                 <div class="col-lg-12 m-auto">
                     <div class="m-3">
@@ -14,13 +14,13 @@
                             <h3 class="text "><strong>{{ $category->name_of_expertise }}</strong></h3>
                             <div class="ml-auto row ">
 
-                                <h5><span class="badge grey ">{{ $category->years_of_experience }} Years of Experience</span>
+                                <h5><span class="badge grey mt-2">{{ $category->name_of_expertise }} Years of Experience</span>
                                 </h5>
 
                             </div>
 
-                            <p class="mt-3">My name is {{ $name }}, I am based of {{ $category->category }},
-                                plz hire right now me or i wil kill you. Im not playinf with you</p>
+                            <p class="mt-3">My name is {{ $name }}, I am based of {{ $category->category }} with {{ $category->name_of_expertise  }} years of experience,
+                                plz hire right now me or i wil kill you. Im not playing with you</p>
 
                             <div class="row">
                                 <span

@@ -3,7 +3,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="col-md-8 pt-5 mt-5 mx-auto">
+    <section class="col-md-8 pt-5 pb-5 mt-5 mx-auto">
         <div class="col-md-10">
             <h5 class="my-4 dark-grey-text font-weight-bold">Edit Job Request</h5>
         </div>

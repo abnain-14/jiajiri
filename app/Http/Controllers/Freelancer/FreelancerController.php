@@ -19,7 +19,7 @@ class FreelancerController extends Controller
     public function index()
     {
       
-        $jobs = JobRequest::orderBy('created_at', 'desc')->get();
+        $jobs = JobRequest::orderBy('created_at', 'desc')->paginate(3);
         return view('freelancer.home')->with('jobs', $jobs);
     }
 
