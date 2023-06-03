@@ -25,7 +25,7 @@
                                 <div class="row">
                                     <div class="col-12 pl-4">
                                         <div class="card-body">
-                                            <h5 class="card-title mb-2"><strong><a href=""
+                                            <h5 class="card-title mb-3"><strong><a href=""
                                                         class="blue-text">{{ $job->job_title }}</a></strong></h5>
                                             <h5><span class="badge grey mt-2">Posted by: {{ $user->name }}</span><span
                                                     class="badge grey mt-2 m-2">Amount: {{ $job->amount }}</span>
@@ -39,7 +39,7 @@
                                                         class="float-left mt-3"><small>{{ $job->created_at->diffForHumans() }}</small></span>
                                                     <span class="float-right ml-auto">
                                                         <a href="/freelancer/viewjob/{{ $job->id }}"
-                                                            class="btn btn-sm btn-primary text-dark">view</a>
+                                                            class="btn btn-sm btn-primary text-white">view</a>
                                                     </span>
                                                 </div>
                                             </div>

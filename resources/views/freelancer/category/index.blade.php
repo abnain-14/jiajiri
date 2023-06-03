@@ -5,7 +5,7 @@
         <div class="row">
 
             <div class="col-md-10">
-                <h5 class="my-4 dark-grey-text font-weight-bold">Categories</h5>
+                <h4 class="card-title h4 my-4 "><strong><a href="" class="text-dark">My Categories</a></strong></h4>
             </div>
             <div class="col-md-2"> <a href="{{ url('/freelancer/category/create') }}"
                     class="btn btn-primary btn-sm float-right mt-4" title="register">Add</a></div>
@@ -55,23 +55,25 @@
                                             <div class="modal-content">
 
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Delete Job Category</h4>
+                                                    <h4 class="modal-title">Delete Job Category.</h4>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-hidden="true">&times;</button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Are you sure you want to delete this category?</p>
+                                                    <p>Are you sure you want to delete this job category?</p>
                                                     <p class="text-warning"><small>This action cannot be undone.</small></p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <input type="button" class="btn btn-sm btn-default"
                                                         data-dismiss="modal" value="Cancel">
                                                     {!! Form::open([
-                                                        'url' => ['App\Http\Controllers\Freelancer\JobRequestController@destroy', $item->id],
+                                                        'action' => ['App\Http\Controllers\Freelancer\CategoryController@destroy', $item->id],
                                                         'method' => 'POST',
                                                     ]) !!}
                                                     {{ Form::hidden('_method', 'DELETE') }}
-                                                    {{ Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) }}
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger btn-sm"
+                                                        style="float:right">Delete</button>
 
                                                     {!! Form::close() !!}
                                                 </div>

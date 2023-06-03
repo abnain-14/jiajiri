@@ -16,17 +16,19 @@
 
 <body>
     <header>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar white ">
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar white">
             <div class="container ">
                 <div class="float-left mr-2"> </div>
                 @if (Auth::user())
                     @if (Auth::user()->role == 'consultant')
-                    <a class="navbar-brand font-weight-bold" href="/consultant"><strong>JIAJIRI</strong></a>
+                        <a class="navbar-brand font-weight-bold blue-text"
+                            href="/consultant"><strong>JIAJIRI.</strong></a>
                     @elseif(Auth::user()->role == 'freelancer')
-                    <a class="navbar-brand font-weight-bold" href="/freelancer"><strong>JIAJIRI</strong></a>
+                        <a class="navbar-brand font-weight-bold blue-text"
+                            href="/freelancer"><strong>JIAJIRI.</strong></a>
                     @endif
                 @endif
-                
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4"
                     aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
@@ -35,21 +37,23 @@
                     <ul class="navbar-nav ml-auto">
                         @if (Auth::user())
                             @if (Auth::user()->role == 'consultant')
-                                <li><a class="nav-link dark-grey-text font-weight-bold hoverable" href="#">Find Freelancer</a></li>
-                                <li><a class="nav-link dark-grey-text font-weight-bold hoverable" href="#">Payments</a></li>
-                                <li><a class="nav-link dark-grey-text font-weight-bold hoverable"
-                                        href="{{ url('consultant/jobrequest/') }}">Post
-                                        Job
-                                        request</a>
+                                <li><a class="nav-link blue-text font-weight-bold hoverable"
+                                        href="{{ url('consultant/jobrequest/') }}">
+                                        Requests</a>
+                                </li>
+                                <li><a class="nav-link blue-text font-weight-bold hoverable"
+                                        href="#">Freelancers</a></li>
+                                <li><a class="nav-link blue-text font-weight-bold hoverable" href="#">Payments</a>
                                 </li>
                             @elseif(Auth::user()->role == 'freelancer')
-                                <li><a class="nav-link dark-grey-text font-weight-bold hoverable"
-                                        href="{{ url('/freelancer/category') }}">Register
-                                        Category</a>
+                                <li><a class="nav-link blue-text font-weight-bold hoverable"
+                                        href="{{ url('/freelancer/category') }}">
+                                        Categories</a>
                                 </li>
-                                <li><a class="nav-link dark-grey-text font-weight-bold hoverable" href="#">Attended Job requests</a>
+                                <li><a class="nav-link blue-text font-weight-bold hoverable" href="#">Requests</a>
                                 </li>
-                                <li><a class="nav-link dark-grey-text font-weight-bold hoverable" href="#">Payments</a></li>
+                                <li><a class="nav-link blue-text font-weight-bold hoverable" href="#">Payments</a>
+                                </li>
                             @endif
 
 
@@ -57,15 +61,15 @@
                         @endif
                         <li class="nav-item dropdown ml-3">
                             @if (Auth::user())
-                                <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold text-dark"
+                                <a class="nav-link dropdown-toggle blue-text font-weight-bold"
                                     id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false"><i class="fas fa-user text-dark"></i>
+                                    aria-expanded="false"><i class="fas fa-user blue-text"></i>
                                     {{ Auth::user()->name }}
                                 </a>
                             @else
-                                <a class="nav-link dropdown-toggle dark-grey-text font-weight-bold text-dark"
+                                <a class="nav-link dropdown-toggle blue-text font-weight-bold"
                                     id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false"><i class="fas fa-user text-dark"></i> Profile </a>
+                                    aria-expanded="false"><i class="fas fa-user blue-text"></i> Profile </a>
                             @endif
                             <div class="dropdown-menu dropdown-menu-right dropdown-cyan"
                                 aria-labelledby="navbarDropdownMenuLink-4">

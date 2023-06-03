@@ -10,10 +10,8 @@
                 <div class="col-lg-12 m-auto">
                     <div class="m-3">
                         <div class="m-1 mb-4">
-                            <h3 class="text blue-text m-2"><strong>{{ $job->job_title }}</strong></h3>
-                            <h5><span class="badge pink mt-2 m-2">Posted by: {{ $user->name }}</span> <span
-                                    class="badge pink mt-2 m-2">Amount: {{ $job->amount }}</span>
-                            </h5>
+                            <h3 class="text blue-text mb-4 m-2"><strong>{{ $job->job_title }}</strong></h3>
+
                             <div class="ml-auto row ">
                                 @php
                                     $skillsArray = explode(',', $job->job_qualification);
@@ -23,7 +21,10 @@
                                     <h5><span class="badge grey m-2">{{ $skill }}</span></h5>
                                 @endforeach
                             </div>
-                            <p class="m-2">{{ $job->job_description }}</p>
+                            <h5><span class="badge blue mt-1 m-2">Posted by: {{ $user->name }}</span> <span
+                                    class="badge blue mt-1 ">Amount: {{ $job->amount }}</span>
+                            </h5>
+                            <p class="m-2 mt-3">{{ $job->job_description }}</p>
 
                             <div class="row">
                                 <span

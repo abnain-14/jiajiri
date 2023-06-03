@@ -5,10 +5,11 @@
         <div class="row">
 
             <div class="col-md-10">
-                <h5 class="my-4 dark-grey-text font-weight-bold">Job Requests</h5>
+
+                <h4 class="card-title h4 my-4 "><strong><a href="" class="text-dark">My Job Requests</a></strong></h4>
             </div>
             <div class="col-md-2 mt-3"> <a href="{{ url('/consultant/jobrequest/create') }}" class="btn btn-primary btn-sm"
-                    title="Add New Job Request"> Post Job</a></div>
+                    title="Add New Job Request">Add Job</a></div>
         </div>
 
 
@@ -61,7 +62,7 @@
                                             <div class="modal-content">
 
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Delete Job Request</h4>
+                                                    <h4 class="modal-title">Delete Job Request.</h4>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-hidden="true">&times;</button>
                                                 </div>
@@ -73,11 +74,13 @@
                                                     <input type="button" class="btn btn-sm btn-default"
                                                         data-dismiss="modal" value="Cancel">
                                                     {!! Form::open([
-                                                        'url' => ['App\Http\Controllers\Freelancer\CategoryController@destroy', $item->id],
+                                                        'action' => ['App\Http\Controllers\Consultant\JobRequestController@destroy', $item->id],
                                                         'method' => 'POST',
                                                     ]) !!}
                                                     {{ Form::hidden('_method', 'DELETE') }}
-                                                    {{ Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) }}
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger btn-sm"
+                                                        style="float:right">Delete</button>
 
                                                     {!! Form::close() !!}
                                                 </div>

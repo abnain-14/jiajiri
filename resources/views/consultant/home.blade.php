@@ -31,7 +31,7 @@
                                                 <div class="col-12 pl-0 ml-3">
                                                     <div class="card-body">
                                                         <h4 class="card-title mb-3"><strong><a href=""
-                                                                    class="blue-text">{{ $name }}</a></strong>
+                                                                    class="grey-text">{{ $name }}</a></strong>
                                                         </h4>
 
                                                         <h6 class="card-title mb-1"><a href=""
@@ -41,7 +41,7 @@
                                                             class="badge badge-primary mb-3 p-1 mt-2">{{ $categor->category }}
                                                         </span>
                                                         <span
-                                                            class="badge badge-success mb-3 p-1 mt-2">{{ $categor->years_of_experience }}
+                                                            class="badge badge-primary mb-3 p-1 mt-2">{{ $categor->years_of_experience }}
                                                             Years of experience</span>
 
                                                         <div class="card-footer pb-0">
@@ -49,7 +49,7 @@
                                                                 <span
                                                                     class="float-left mt-3"><small>{{ $categor->created_at->diffForHumans() }}</small></span>
                                                                 <span class="float-right ml-auto">
-                                                                    <a class="btn btn-sm btn-primary text-dark"
+                                                                    <a class="btn btn-sm btn-primary text-white"
                                                                         href="/consultant/viewlancer/{{ $categor->id }}">view</a>
                                                                 </span>
                                                             </div>
@@ -60,9 +60,6 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                <div class="py-4 mx-auto" style="margin-left: 20px">
-                                    {{ $category->links('pagination::bootstrap-4') }}
-                                </div>
                             @else
                                 <h4 class="my-4 pt-5 text-center dark-grey-text font-weight-bold mx-auto">Nothing to show
                                     here</h4>
@@ -70,6 +67,9 @@
                         </div>
                     </div>
             </section>
+            <div class="py-4">
+                {{ $category->links('pagination::bootstrap-4') }}
+            </div>
         </section>
     </div>
 @endsection

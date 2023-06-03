@@ -1,5 +1,3 @@
-
-
 @extends('layouts.app')
 
 @section('content')
@@ -11,7 +9,7 @@
             <div class="m-3">
                 <div class="col-lg-12 m-auto">
                     <div class="m-3">
-                         {!! Form::open([
+                        {!! Form::open([
                             'action' => ['App\Http\Controllers\Consultant\JobRequestController@update', $jobrequest->id],
                             'method' => 'POST',
                         ]) !!}
@@ -47,7 +45,7 @@
                             </div>
                         </div>
 
-                          {{ Form::hidden('_method', 'PUT') }}
+                        {{ Form::hidden('_method', 'PUT') }}
                         {{ Form::submit('update', ['class' => 'btn btn-sm btn-primary']) }}
                         {!! Form::close() !!}
                     </div>

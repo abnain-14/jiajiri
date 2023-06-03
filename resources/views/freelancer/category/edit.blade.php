@@ -3,7 +3,7 @@
 @section('content')
     <section class="col-md-8 pt-5 pb-5 mt-5 mx-auto">
         <div class="col-md-10">
-            <h5 class="my-4 dark-grey-text font-weight-bold">Edit Your Job Category</h5>
+            <h5 class="my-4 dark-grey-text font-weight-bold">Edit Job Category</h5>
         </div>
         <div class="card mt-3 hoverable">
             <div class="m-3">

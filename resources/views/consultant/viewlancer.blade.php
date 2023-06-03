@@ -11,27 +11,48 @@
                 <div class="col-lg-12 m-auto">
                     <div class="m-3">
                         <div class="m-1 mb-4">
-                            <h3 class="text "><strong>{{ $category->name_of_expertise }}</strong></h3>
+                            <h4 class="card-title h4 mb-3"><strong><a href=""
+                                        class="grey-text">{{ $category->name_of_expertise }}</a></strong></h4>
                             <div class="ml-auto row ">
 
-                                <h5><span class="badge grey mt-2">{{ $category->name_of_expertise }} Years of Experience</span>
-                                </h5>
+                                <h5><span class="badge grey mt-2">{{ $category->category }}</span></h5>
+                                <h5><span class="badge grey mt-2 ml-2">{{ $category->years_of_experience }} Years of
+                                        Experience</span></h5>
 
                             </div>
 
-                            <p class="mt-3">My name is {{ $name }}, I am based of {{ $category->category }} with {{ $category->name_of_expertise  }} years of experience,
+                            <p class="mt-3">My name is {{ $name }}, I am based of {{ $category->category }} with
+                                {{ $category->name_of_expertise }} years of experience,
                                 plz hire right now me or i wil kill you. Im not playing with you</p>
 
                             <div class="row">
                                 <span
                                     class="float-left mt-4 col"><small>{{ $category->created_at->diffForHumans() }}</small></span>
-                                <div class="col-md-2 mt-3 float-right"> <a href=""
-                                        class="btn btn-primary btn-sm">contact</a></div>
+                                <div class="col-md-2 mt-3 float-right"> <a href="#contact{{ $category->id }}"
+                                        data-toggle="modal" class="btn btn-primary btn-sm">contact</a></div>
                             </div>
 
 
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div id="contact{{ $category->id }}" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="card-title h4 mb-3"><strong><a href="" class="grey-text">Contact</a></strong></h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text grey-text">Name: <strong>{{ $user->name }} </strong></p>
+                        <p class="text grey-text">Email: <strong> {{ $user->email }} </strong></p>
+                        <p class="text grey-text">Phone: <strong> {{ $user->phone }}</strong></p>
+
+                    </div>
+
                 </div>
             </div>
         </div>
