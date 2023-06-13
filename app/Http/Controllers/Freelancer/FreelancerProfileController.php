@@ -29,26 +29,6 @@ class FreelancerProfileController extends Controller
     }
 
 
-    public function create()
-    {
-    }
-
-
-    public function store(Request $request)
-    {
-    }
-
-
-    public function show($land_id)
-    {
-    }
-
-
-
-    public function edit($id)
-    {
-    }
-
 
     public function update(Request $request, $id)
     {
@@ -91,9 +71,13 @@ class FreelancerProfileController extends Controller
             $user->phone = $user->phone;
         }
 
+        if ($request->input('acc_num')) {
+            $user->acc_number = $request->input('acc_num');
+        } else {
+            $user->acc_number = $user->acc_number;
+        }
+
         $user->save();
         return redirect()->back()->with('success', 'Prifile Edited');
     }
-
-
 }

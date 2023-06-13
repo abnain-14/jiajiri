@@ -17,7 +17,7 @@
                             </li>
 
 
-                           
+
 
 
                             <li class="nav-item">
@@ -90,6 +90,16 @@
                                     {{ Form::email('email', Auth::user()->email, ['class' => 'form-control', 'plcaholder' => 'Email']) }}
                                 </div>
 
+
+                            </div>
+
+
+                            <div class="row pt-3">
+                                <div class="col">
+                                    {{ Form::label('acc_num', 'Account number') }}
+                                    {{ Form::text('acc_num', Auth::user()->acc_number, ['class' => 'form-control', 'plcaholder' => 'Account number']) }}
+
+                                </div>
                                 <div class="col">
                                     {{ Form::label('phone', 'Phone') }}
                                     {{ Form::text('phone', Auth::user()->phone, ['class' => 'form-control', 'plcaholder' => 'Email']) }}
@@ -105,7 +115,7 @@
                         </div>
                     </div>
                 </div>
-                
+
 
 
                 <div class="tab-pane fade col-md-9 mx-auto" id="panel3" role="tabpanel">

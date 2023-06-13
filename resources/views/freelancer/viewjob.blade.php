@@ -29,7 +29,26 @@
                             <div class="row">
                                 <span
                                     class="float-left m-2 col"><small>{{ $job->created_at->diffForHumans() }}</small></span>
-                                <div class=" mt-3 float-right"> <a href="" class="btn btn-primary btn-sm"> apply</a>
+                                <div class=" mt-3 float-right">
+
+                                    @php
+                                        $app = App\Models\Applications::where('freelancer_id', Auth::user()->id)
+                                            ->where('jobrequest_id', $job->id)
+                                            ->first();
+                                        
+                                    @endphp
+                                    @if ($app)
+                                        @if ($app->status == 'accepted')
+                                            <span class="badge badge-success p-2">Accepted</span>
+                                        @elseif ($app->status == 'rejected')
+                                            <span class="badge badge-danger p-2">Rejected</span>
+                                        @else
+                                            <span class="badge badge-info p-2">Pending...</span>
+                                        @endif
+                                    @else
+                                        <a href="/freelancer/apply/{{ $job->id }}/edit"
+                                            class="btn btn-primary btn-sm"> apply</a>
+                                    @endif
                                 </div>
                             </div>
 

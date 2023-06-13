@@ -5,7 +5,7 @@
         <div class="row">
 
             <div class="col-md-10">
-                <h4 class="card-title h4 my-4 "><strong><a href="" class="text-dark">My Categories</a></strong></h4>
+                <h4 class="card-title h4 my-4 "><strong><a href="" class="text-dark">CATEGORIES.</a></strong></h4>
             </div>
             <div class="col-md-2"> <a href="{{ url('/freelancer/category/create') }}"
                     class="btn btn-primary btn-sm float-right mt-4" title="register">Add</a></div>
@@ -55,7 +55,8 @@
                                             <div class="modal-content">
 
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">Delete Job Category.</h4>
+                                                    <h4 class="card-title h4 mb-3"><strong><a href=""
+                                                                class="grey-text">DELETE CATEGORY.</a></strong></h4>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-hidden="true">&times;</button>
                                                 </div>
@@ -89,7 +90,8 @@
                 </div>
             </div>
         @else
-            <h4 class="my-4 pt-5 text-center dark-grey-text font-weight-bold">No Job Categories Created</h4>
+            <h4 class="card-title pt-5  text-center h4 mb-3 mx-auto"><strong><a href="" class="grey-text">Nothing
+                        to show here..</a></strong></h4>
         @endif
     </section>
 @endsection

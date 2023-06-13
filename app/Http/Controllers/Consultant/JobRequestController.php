@@ -32,7 +32,7 @@ class JobRequestController extends Controller
             $jobrequest->amount = $request->input('amount');
             $jobrequest->job_description = $request->input('job_description');
             $jobrequest->job_qualification = $request->input('job_qualification');
-    
+
             $jobrequest->save();
             return redirect('/consultant/jobrequest')->with('flash_message', 'Job Request Added!');
         }

@@ -42,17 +42,16 @@
                                         Requests</a>
                                 </li>
                                 <li><a class="nav-link blue-text font-weight-bold hoverable"
-                                        href="#">Freelancers</a></li>
-                                <li><a class="nav-link blue-text font-weight-bold hoverable" href="#">Payments</a>
+                                        href="/consultant/apply">Applications</a></li>
+                                <li><a class="nav-link blue-text font-weight-bold hoverable" href="/consultant/payment">Payments</a>
                                 </li>
                             @elseif(Auth::user()->role == 'freelancer')
                                 <li><a class="nav-link blue-text font-weight-bold hoverable"
                                         href="{{ url('/freelancer/category') }}">
                                         Categories</a>
                                 </li>
-                                <li><a class="nav-link blue-text font-weight-bold hoverable" href="#">Requests</a>
-                                </li>
-                                <li><a class="nav-link blue-text font-weight-bold hoverable" href="#">Payments</a>
+                              
+                                <li><a class="nav-link blue-text font-weight-bold hoverable" href="/freelancer/apply/show/">Payments</a>
                                 </li>
                             @endif
 

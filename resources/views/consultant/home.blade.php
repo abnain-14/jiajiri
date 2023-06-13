@@ -61,8 +61,8 @@
                                     </div>
                                 @endforeach
                             @else
-                                <h4 class="my-4 pt-5 text-center dark-grey-text font-weight-bold mx-auto">Nothing to show
-                                    here</h4>
+                                <h4 class="card-title h4 mb-3 mx-auto"><strong><a href="" class="grey-text">Nothing
+                                            to show here..</a></strong></h4>
                             @endif
                         </div>
                     </div>

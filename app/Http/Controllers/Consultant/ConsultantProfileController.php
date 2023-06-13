@@ -29,24 +29,6 @@ class ConsultantProfileController extends Controller
     }
 
 
-    public function create()
-    {
-    }
-
-
-    public function store(Request $request)
-    {
-    }
-
-
-    public function show($land_id)
-    {
-    }
-
-
-
-   
-
 
     public function update(Request $request, $id)
     {
@@ -92,6 +74,4 @@ class ConsultantProfileController extends Controller
         $user->save();
         return redirect()->back()->with('success', 'Prifile Edited');
     }
-
-
 }
