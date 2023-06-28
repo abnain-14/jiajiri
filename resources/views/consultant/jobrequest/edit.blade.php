@@ -17,7 +17,7 @@
                         <div class=" m-auto">
                             <div class="md-form form-sm">
                                 {{ Form::label('job_title', 'Job Title') }}
-                                {{ Form::text('job_title', $jobrequest->job_title, ['class' => 'form-control form-control', 'plcaholder' => 'Job Title']) }}
+                                {{ Form::text('job_title', $jobrequest->job_title, ['class' => 'form-control form-control', 'plcaholder' => 'Job Title', 'required']) }}
 
                             </div>
                         </div>
@@ -25,22 +25,23 @@
                         <div class=" m-auto">
                             <div class="md-form form-sm">
                                 {{ Form::label('amount', 'Estimate Amount') }}
-                                {{ Form::text('amount', $jobrequest->amount, ['class' => 'form-control form-control', 'plcaholder' => 'Estimate Amount']) }}
+                                {{ Form::text('amount', $jobrequest->amount, ['class' => 'form-control form-control', 'plcaholder' => 'Estimate Amount', 'required']) }}
 
                             </div>
                         </div>
 
                         <div class=" m-auto">
+                            
                             <div class="md-form form-sm">
                                 {{ Form::label('job_description', 'Job Description') }}
-                                {{ Form::textarea('job_description', $jobrequest->job_description, ['class' => 'md-textarea form-control', 'plcaholder' => 'Job Description']) }}
+                                {{ Form::textarea('job_description', $jobrequest->job_description, ['class' => 'md-textarea form-control ', 'plcaholder' => 'Job Description'], 'required') }}
 
                             </div>
                         </div>
                         <div class=" m-auto">
                             <div class="md-form form-sm">
                                 {{ Form::label('job_qualification', 'Job Qualifications') }}
-                                {{ Form::text('job_qualification', $jobrequest->job_qualification, ['class' => 'form-control form-control', 'plcaholder' => 'Job Qualifications']) }}
+                                {{ Form::text('job_qualification', $jobrequest->job_qualification, ['class' => 'form-control form-control', 'plcaholder' => 'Job Qualifications'], 'required') }}
 
                             </div>
                         </div>

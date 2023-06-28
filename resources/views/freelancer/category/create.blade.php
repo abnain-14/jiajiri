@@ -14,7 +14,7 @@
                             <div class="col m-auto">
                                 <div class="md-form form-sm">
                                     {{ Form::label('name_of_expertise', 'Name of Expertise') }}
-                                    {{ Form::text('name_of_expertise', '', ['class' => 'form-control form-control', 'plcaholder' => 'Name of Expertise']) }}
+                                    {{ Form::text('name_of_expertise', '', ['class' => 'form-control form-control', 'plcaholder' => 'Name of Expertise' , 'required']) }}
 
                                 </div>
                             </div>
@@ -22,17 +22,25 @@
                             <div class="col m-auto">
 
                                 {{ Form::label('category', 'Category') }}
-                                {{ Form::select('category', ['Graphics Design' => 'Graphics Design', 'Web Design' => 'Web Design', 'System analyst' => 'System analyst', 'Project Manager' => 'Project Manager', 'Mobile Developer' => 'Mobile Developer', 'Database Administrator' => 'Database Administrator'], '', ['class' => 'mdb-select md-form']) }}
+                                {{ Form::select('category', ['Graphics Design' => 'Graphics Design', 'Web Design' => 'Web Design', 'System analyst' => 'System analyst', 'Project Manager' => 'Project Manager', 'Mobile Developer' => 'Mobile Developer', 'Database Administrator' => 'Database Administrator'], '', ['class' => 'mdb-select md-form', 'required']) }}
 
                             </div>
 
                             <div class="col m-auto">
                                 <div class="md-form form-sm">
                                     {{ Form::label('years_of_experience', 'Years of Experience') }}
-                                    {{ Form::text('years_of_experience', '', ['class' => 'form-control form-control', 'plcaholder' => 'Years of Experience']) }}
+                                    {{ Form::text('years_of_experience', '', ['class' => 'form-control form-control', 'plcaholder' => 'Years of Experience' , 'required']) }}
 
                                 </div>
                             </div>
+                        </div>
+                            <div class=" m-auto">
+                            <div class="md-form form-sm">
+                                {{ Form::label('work_experience', ' Work Experience') }}
+                                {{ Form::textarea('work_experience', '', ['class' => 'form-control md-textarea form-control', 'plcaholder' => 'Work Experience', 'required']) }}
+
+                            </div>
+                        
 
                         </div>
                         {{ Form::submit('Submit', ['class' => 'btn btn-sm btn-primary ml-auto']) }}

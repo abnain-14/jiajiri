@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name_of_expertise')->nullable();
             $table->string('years_of_experience')->nullable();
             $table->string('category');
+            $table->longText('work_experience')->nullable();
             $table->timestamps();
         });
     }

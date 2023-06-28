@@ -44,7 +44,7 @@
                                         <td>{{ $item->job_title }}</td>
                                         <td>{{ $item->amount }} TZS</td>
                                         <td>{!! Str::limit($item->job_description, 50) !!}</td>
-                                        <td>{{ $item->job_qualification }}</td>
+                                        <td>{!! Str::limit($item->job_qualification, 50) !!}</td>
 
                                         <td><a href="{{ url('/consultant/jobrequest/' . $item->id . '/edit') }}"
                                                 class="btn btn-sm btn-primary">edit</a>

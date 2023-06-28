@@ -29,6 +29,7 @@
                                     <th class="w-auto"><strong>Expertise</th></strong>
                                     <th class="w-auto"><strong>Experience</th></strong>
                                     <th class="w-auto"><strong>Category</th></strong>
+                                    <th class="w-auto"><strong>Work Experience</th></strong>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,6 +39,7 @@
                                         <td class="w-auto">{{ $item->name_of_expertise }}</td>
                                         <td class="w-auto">{{ $item->years_of_experience }} Years</td>
                                         <td class="w-auto">{{ $item->category }}</td>
+                                        <td class="w-auto">{!! Str::limit( $item->work_experience, 50) !!}</td>
 
                                         <td><a href="{{ url('/freelancer/category/' . $item->id . '/edit') }}"
                                                 class="btn btn-sm btn-primary">edit</a>
