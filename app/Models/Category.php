@@ -10,5 +10,5 @@ class Category extends Model
     use HasFactory;
     protected $table = 'category';
     protected $primaryKey = 'id';
-    protected $fillable = ['name_of_expertise', 'years_of_experience', 'category'];
+    protected $fillable = ['name_of_expertise', 'years_of_experience', 'category', 'work_experience'];
 }

@@ -25,7 +25,7 @@
                             <h5><span class="badge blue mt-1 m-2">Posted by: {{ $user->name }}</span> <span
                                     class="badge blue mt-1 ">Amount: {{ $job->amount }}</span>
                             </h5>
-                            <p class="m-2 mt-3">{{ $job->job_description }}</p>
+                            <p class="m-2 mt-3">{!! nl2br(e($job->job_description )) !!}</p>
 
                             <div class="row">
                                 <span

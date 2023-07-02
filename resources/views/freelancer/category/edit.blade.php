@@ -39,7 +39,12 @@
                             </div>
 
                         </div>
+                        <div class=" m-auto">
+                            <div class="md-form form-sm">
+                                {{ Form::label('work_experience', ' Work Experience') }}
+                                {{ Form::textarea('work_experience', '', ['class' => 'md-textarea form-control', 'plcaholder' => 'Work Experience', 'required']) }}
 
+                            </div>
                         {{ Form::hidden('_method', 'PUT') }}
                         {{ Form::submit('update', ['class' => 'btn btn-sm btn-primary']) }}
                         {!! Form::close() !!}

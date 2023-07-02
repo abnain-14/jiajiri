@@ -30,7 +30,7 @@
                                             <h5><span class="badge grey mt-2">Posted by: {{ $user->name }}</span><span
                                                     class="badge grey mt-2 m-2">Amount: {{ $job->amount }}</span>
                                             </h5>
-                                            <p class="mt-3">{{ $job->job_description }}</p>
+                                            <p class="mt-3">{!! Str::limit( $job->job_description, 150) !!}</p>
 
 
                                             <div class="card-footer pb-0">
