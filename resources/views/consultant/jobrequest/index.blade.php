@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+
     <section class="col-md-9 pt-5 pb-5 mt-5 mx-auto">
+        @include('layouts.alerts')
         <div class="row">
 
             <div class="col-md-10">
@@ -29,7 +31,7 @@
                                 <tr>
 
 
-                                    <th class="w-auto"><strong>#</strong></th>
+                                    <th class="w-auto"><strong>ID</strong></th>
                                     <th class="w-auto"><strong>Job Title</strong></th>
                                     <th class="w-auto"><strong>Amount</strong></th>
                                     <th class="w-auto"><strong>Description</strong></th>
@@ -44,7 +46,7 @@
                                         <td>{{ $item->job_title }}</td>
                                         <td>{{ $item->amount }} TZS</td>
                                         <td>{!! Str::limit($item->job_description, 50) !!}</td>
-                                        <td>{!! Str::limit($item->job_qualification, 50) !!}</td>
+                                        <td>{{ $item->job_qualification }}</td>
 
                                         <td><a href="{{ url('/consultant/jobrequest/' . $item->id . '/edit') }}"
                                                 class="btn btn-sm btn-primary">edit</a>

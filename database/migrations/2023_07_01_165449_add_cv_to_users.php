@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category', function (Blueprint $table) {
-            $table->id();
-            $table->string('name_of_expertise')->nullable();
-            $table->string('years_of_experience')->nullable();
-            $table->string('category');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('cv')->default('none');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category');
+        Schema::table('users', function (Blueprint $table) {
+            Schema::dropIfExists('cv');
+        });
     }
 };

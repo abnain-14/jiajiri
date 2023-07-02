@@ -2,6 +2,7 @@
 
 @section('content')
     <section class="col-md-9 pt-5 pb-5 mt-5 mx-auto">
+        @include('layouts.alerts')
         <div class="row">
 
             <div class="col-md-9">
@@ -28,10 +29,11 @@
                                 <tr>
 
 
-                                    <th class="w-auto"><strong>#</strong></th>
+                                    <th class="w-auto"><strong>ID</strong></th>
                                     <th class="w-auto"><strong>Job Title</strong></th>
-                                    <th class="w-auto"><strong>Job amount</strong></th>
+                                    <th class="w-auto"><strong>Job Amount</strong></th>
                                     <th class="w-auto"><strong>Freelancer</strong></th>
+                                    <th class="w-auto"><strong>Status</strong></th>
 
 
 
@@ -49,6 +51,13 @@
                                         <td>{{ $job->job_title }}</td>
                                         <td>{{ $job->amount }} TZS</td>
                                         <td>{{ $freelancer->name }}</td>
+                                        @if ($item->status == 'accepted')
+                                            <td><span class="badge badge-success">{{ $item->status }}</span></td>
+                                        @elseif($item->status == 'rejected')
+                                            <td><span class="badge badge-danger">{{ $item->status }}</span></td>
+                                        @else
+                                            <td><span class="badge badge-info">not reviewed</span></td>
+                                        @endif
 
                                         <td> <a href="/consultant/apply/{{ $item->id }}" class="btn btn-sm btn-primary">
                                                 View

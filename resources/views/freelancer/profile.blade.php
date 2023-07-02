@@ -2,8 +2,10 @@
 
 
 @section('content')
+    @php $user = Auth::user() @endphp
     <div class="m-5 mx-auto pt-3 col-md-10">
         <section class="pb-5">
+        @include('layouts.alerts')
             <div class=" mt-5 mb-5">
                 <div class="">
                     <div class="">
@@ -16,15 +18,19 @@
                                     role="tab"> Profile</a>
                             </li>
 
-
-
-
-
                             <li class="nav-item">
 
                                 <a class="nav-link dark-grey-text font-weight-bold" data-toggle="tab" href="#panel3"
                                     role="tab">
                                     </i>Password </a>
+                            </li>
+
+
+                            <li class="nav-item">
+
+                                <a class="nav-link dark-grey-text font-weight-bold" data-toggle="tab" href="#panel4"
+                                    role="tab">
+                                    </i>CV </a>
                             </li>
 
 
@@ -150,8 +156,43 @@
                     </form>
                 </div>
 
+                <div class="tab-pane fade col-md-9 mx-auto" id="panel4" role="tabpanel">
 
+                    @if (Auth::user()->cv == null)
+                        <div class="dark-grey-text d-flex  align-items-center pt-3 pb-4 pl-4 ">
+                            <div class="mx-auto">
 
+                                <h4 class="m-5">No CV uploaded, please upload a PDF file</h4>
+                                <div class="form-group align-items-center text-center">
+                                    <form action="/freelancer/cvupload/{{ $user->id }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="file" name="cv" style="font-size:12px">
+                                        <button class="btn btn-sm btn-primary" type="submit">Upload</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    @else
+                        <div class="dark-grey-text d-flex  align-items-center pt-3 pb-4 pl-4 ">
+                            <div class="mx-auto">
+
+                                <h4 class="m-5">CV uploaded, you can view it <a href="/storage/cv/{{ Auth::user()->cv }}" target="_blank">here!</a>, to update just upload new</h4>
+                                <div class="form-group align-items-center text-center">
+                                    <form action="/freelancer/cvupload/{{ $user->id }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="file" name="cv" style="font-size:12px">
+                                        <button class="btn btn-sm btn-primary" type="submit">Upload</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    @endif
+
+                </div>
             </div>
         </section>
     </div>

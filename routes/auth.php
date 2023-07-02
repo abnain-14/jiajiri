@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Auth\FreelancerAuthController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
@@ -16,13 +16,13 @@ Route::middleware('guest')->group(function () {
 
     // Route::post('register', [RegisterController::class, 'store']);
 
-    Route::get('login', [FreelancerAuthController::class, 'create'])
+    Route::get('login', [AuthController::class, 'create'])
         ->name('login');
 
     // Route::get('restrict', [AdminAuthController::class, 'create'])
     //     ->name('admin');
 
-    Route::post('login', [FreelancerAuthController::class, 'store']);
+    Route::post('login', [AuthController::class, 'store']);
     // Route::post('restrict', [AdminAuthController::class, 'store']);
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
@@ -55,6 +55,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::post('logout', [FreelancerAuthController::class, 'destroy'])
+    Route::post('logout', [AuthController::class, 'destroy'])
         ->name('logout');
 });

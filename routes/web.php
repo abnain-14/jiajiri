@@ -12,6 +12,13 @@ use App\Http\Controllers\Freelancer\FreelancerProfileController;
 use App\Http\Controllers\Freelancer\ApplicationsFreelancerController;
 use App\Http\Controllers\Consultant\ApplicationsConsultantController;
 use App\Http\Controllers\Consultant\PaymentsController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AdminConsultantsController;
+use App\Http\Controllers\Admin\AdminFreelancersController;
+use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminJobRequestsController;
+use App\Http\Controllers\Admin\AdminPaymentsController;
+
 
 
 
@@ -47,6 +54,19 @@ Route::resource("/freelancer/profile" , FreelancerProfileController::class);
 Route::get('/freelancer/viewjob/{id}', [FreelancerController::class, 'show']);
 Route::get('/consultant/viewlancer/{id}', [ConsultantController::class, 'show']);
 Route::post('/consultant/payslip/upload/{id}', [ApplicationsConsultantController::class, 'upload']);
+Route::post('/freelancer/cvupload/{id}', [FreelancerProfileController::class, 'cvupload']);
+
+
+
+
+Route::resource("admin" , DashboardController::class);
+Route::resource("manage_consultants" , AdminConsultantsController::class);
+Route::resource("manage_freelancers" , AdminFreelancersController::class);
+Route::resource("manage_category" , AdminCategoryController::class);
+Route::resource("manage_jobs" , AdminJobRequestsController::class);
+Route::resource("manage_payments" , AdminPaymentsController::class);
+Route::post('/admin/freelancer/cvupload/{id}', [AdminFreelancersController::class, 'cvupload']);
+
 
 
 

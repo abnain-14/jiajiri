@@ -2,6 +2,7 @@
 
 @section('content')
     <section class="col-md-9 pt-5 pb-5 mt-5 mx-auto">
+    @include('layouts.alerts')
         <div class="row">
 
             <div class="col-md-10">
@@ -28,11 +29,12 @@
                                 <tr>
 
 
-                                    <th class="w-auto"><strong>#</strong></th>
+                                    <th class="w-auto"><strong>ID</strong></th>
                                     <th class="w-auto"><strong>Job Title</strong></th>
                                     <th class="w-auto"><strong>Freelancer</strong></th>
                                     <th class="w-auto"><strong>Amount</strong></th>
-                                    <th class="w-auto"><strong>Action</strong></th>
+                                    <th class="w-auto"><strong>Account</strong></th>
+                                  
 
                                 </tr>
                             </thead>
@@ -48,6 +50,7 @@
                                         <td>{{ $job->job_title }}</td>
                                         <td>{{ $freelancer->name }}</td>
                                         <td>{{ $job->amount }} TZS</td>
+                                        <td>{{ $freelancer->acc_number }}</td>
 
                                         @if (is_null($item->payslip))
                                             <td><a class="btn btn-sm btn-primary" data-toggle="modal"

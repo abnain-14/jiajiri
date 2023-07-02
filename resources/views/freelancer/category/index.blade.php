@@ -2,6 +2,8 @@
 
 @section('content')
     <section class="col-md-9 pt-5 mt-5 pb-5 mx-auto ">
+
+    @include('layouts.alerts')
         <div class="row">
 
             <div class="col-md-10">
@@ -25,11 +27,10 @@
                         <table class="table table-hover mb-1">
                             <thead>
                                 <tr>
-                                    <th class="w-auto"><strong>#</th></strong>
+                                    <th class="w-auto"><strong>ID</th></strong>
                                     <th class="w-auto"><strong>Expertise</th></strong>
                                     <th class="w-auto"><strong>Experience</th></strong>
                                     <th class="w-auto"><strong>Category</th></strong>
-                                    <th class="w-auto"><strong>Work Experience</th></strong>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,17 +40,15 @@
                                         <td class="w-auto">{{ $item->name_of_expertise }}</td>
                                         <td class="w-auto">{{ $item->years_of_experience }} Years</td>
                                         <td class="w-auto">{{ $item->category }}</td>
-                                        <td class="w-auto">{!! Str::limit( $item->work_experience, 50) !!}</td>
 
                                         <td><a href="{{ url('/freelancer/category/' . $item->id . '/edit') }}"
-                                                class="btn btn-sm btn-primary">edit</a>
-                                        </td>
-                                        <td>
-                                        <td> <a href="#deleteCategoryModal{{ $item->id }}" class="btn btn-sm btn-danger"
+                                                class="btn btn-sm btn-primary mx-3">edit</a>
+                                                <a href="#deleteCategoryModal{{ $item->id }}" class="btn btn-sm btn-danger mx-3"
                                                 data-toggle="modal">
                                                 DELETE
                                                 </i></a>
                                         </td>
+                                        
 
                                     </tr>
                                     <div id="deleteCategoryModal{{ $item->id }}" class="modal fade">

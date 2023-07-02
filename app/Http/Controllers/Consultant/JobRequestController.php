@@ -34,7 +34,7 @@ class JobRequestController extends Controller
             $jobrequest->job_qualification = $request->input('job_qualification');
 
             $jobrequest->save();
-            return redirect('/consultant/jobrequest')->with('flash_message', 'Job Request Added!');
+            return redirect('/consultant/jobrequest')->with('success', 'Job Request Added');
         }
     }
 
@@ -64,13 +64,13 @@ class JobRequestController extends Controller
         $jobrequest->job_qualification = $request->input('job_qualification');
 
         $jobrequest->save();
-        return redirect('/consultant/jobrequest')->with('flash_message', 'job request Updated!');
+        return redirect('/consultant/jobrequest')->with('success', 'Job Request Updated');
     }
 
 
     public function destroy(string $id)
     {
         JobRequest::destroy($id);
-        return redirect('/consultant/jobrequest')->with('flash_message', 'jobrequest deleted!');
+        return redirect('/consultant/jobrequest')->with('success', 'Job Request Deleted');
     }
 }

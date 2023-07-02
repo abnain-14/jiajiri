@@ -47,19 +47,35 @@ class ApplicationsConsultantController extends Controller
         $payment->job_id = $application->jobrequest_id;
         $payment->amount = $job->amount;
 
-        if ($request->input('num') == '0') {
 
-            $application->status = "rejected";
+
+        $exist = Payment::where('job_id', $application->jobrequest_id)->where('freelancer_id', $application->freelancer_id)->first();
+
+        if ($request->input('num') == '0') {
+            if ($exist) {
+                $exist->delete();
+                $application->status = "rejected";
+            } else {
+                $application->status = "rejected";
+            }
         } else if ($request->input('num') == '1') {
-            $payment->save();
-            $application->status = "accepted";
+
+            if ($exist) {
+                return redirect('consultant/apply')->with('error', 'Cant apply twice');
+            } else {
+                $payment->save();
+                $application->status = "accepted";
+            }
         }
 
 
         $application->save();
 
 
-        return redirect()->back();
+
+
+
+        return redirect('consultant/apply')->with('success', 'Reviewed');
     }
     public function upload(Request $request, $id)
     {
@@ -75,8 +91,8 @@ class ApplicationsConsultantController extends Controller
             $request->file('payslip')->storeAs('public/payslips', $fileNameToStore);
             $payments->payslip = $fileNameToStore;
             $payments->save();
-        } 
+        }
 
-       return redirect()->back();
+        return redirect()->back()->with('success', 'Receipt Uploaded');
     }
 }

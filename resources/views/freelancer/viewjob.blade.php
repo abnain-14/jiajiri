@@ -5,6 +5,7 @@
         $user = \App\Models\User::where('id', $job->user_id)->first();
     @endphp
     <section class="col-md-9 pt-5 pb-5 mt-5 mx-auto ">
+    @include('layouts.alerts')
         <div class="card mt-2 hoverable shadow-box-example z-depth-3">
             <div class="m-3">
                 <div class="col-lg-12 m-auto">
@@ -24,7 +25,7 @@
                             <h5><span class="badge blue mt-1 m-2">Posted by: {{ $user->name }}</span> <span
                                     class="badge blue mt-1 ">Amount: {{ $job->amount }}</span>
                             </h5>
-                            <p class="m-2 mt-3">{!! nl2br(e($job->job_description )) !!}</p>
+                            <p class="m-2 mt-3">{{ $job->job_description }}</p>
 
                             <div class="row">
                                 <span

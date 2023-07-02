@@ -29,7 +29,12 @@
 
                             </div>
 
-                            <p class="mt-3">{!! nl2br(e($category->work_experience )) !!}</p>
+                            <p class="mt-3">My name is {{ $freelancer->name }}, I am based of {{ $category->category }}
+                                with
+                                {{ $category->name_of_expertise }} years of experience,
+                                plz hire right now me or i wil kill you. Im not playing with you</p>
+
+                            <a class="btn btn-sm btn-grey" target="_blank" href="/storage/cv/{{ $freelancer->cv }}">Open CV</a>
 
                             <div class="row ml-auto float-right">
                                 {!! Form::open([

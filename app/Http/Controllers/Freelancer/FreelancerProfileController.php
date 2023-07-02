@@ -80,4 +80,24 @@ class FreelancerProfileController extends Controller
         $user->save();
         return redirect()->back()->with('success', 'Prifile Edited');
     }
+
+
+    public function cvupload(Request $request, $id)
+    {
+
+        $user = User::find($id);
+
+        if ($request->file('cv')) {
+
+            $fileNameWithExt = $request->file('cv')->getClientOriginalName();
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('cv')->getClientOriginalExtension();
+            $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+            $request->file('cv')->storeAs('public/cv', $fileNameToStore);
+            $user->cv = $fileNameToStore;
+            $user->save();
+        }
+
+        return redirect()->back()->with('success', 'CV Uploaded');
+    }
 }

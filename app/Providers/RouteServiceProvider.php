@@ -20,6 +20,7 @@ class RouteServiceProvider extends ServiceProvider
 
     public const HOME = '/consultant';
     public const FREE = '/freelancer';
+    public const ADMIN = '/admin';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.

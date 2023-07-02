@@ -35,14 +35,14 @@ class ApplicationsFreelancerController extends Controller
         $application->consultant_id = $job->user_id;
         $application->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Job Applied');
     }
 
     public function update($id){
         $payment = Payment::find($id);
         $payment->status = "confirmed";
         $payment->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Payment Reviewed');
     }
 
 

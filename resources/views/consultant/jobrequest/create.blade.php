@@ -14,7 +14,7 @@
                         <div class=" m-auto">
                             <div class="md-form form-sm">
                                 {{ Form::label('job_title', 'Job Title') }}
-                                {{ Form::text('job_title', '', ['class' => 'form-control form-control', 'plcaholder' => 'Job Title'] , 'required') }}
+                                {{ Form::text('job_title', '', ['class' => 'form-control form-control', 'plcaholder' => 'Job Title','required']) }}
 
                             </div>
                         </div>
@@ -22,7 +22,7 @@
                         <div class=" m-auto">
                             <div class="md-form form-sm">
                                 {{ Form::label('amount', 'Estimate Amount') }}
-                                {{ Form::text('amount', '', ['class' => 'form-control form-control', 'plcaholder' => 'Estimate Amount', 'required']) }}
+                                {{ Form::text('amount', '', ['class' => 'form-control form-control', 'plcaholder' => 'Estimate Amount','required']) }}
 
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                         <div class=" m-auto">
                             <div class="md-form form-sm">
                                 {{ Form::label('job_description', 'Job Description') }}
-                                {{ Form::textarea('job_description', '', ['class' => 'md-textarea form-control', 'plcaholder' => 'Job Description', 'required']) }}
+                                {{ Form::textarea('job_description', '', ['class' => 'md-textarea form-control', 'plcaholder' => 'Job Description','required']) }}
 
                             </div>
                         </div>

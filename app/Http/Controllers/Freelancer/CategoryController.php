@@ -32,9 +32,8 @@ class CategoryController extends Controller
         $category->name_of_expertise = $request->input('name_of_expertise');
         $category->years_of_experience = $request->input('years_of_experience');
         $category->category = $request->input('category');
-        $category->work_experience = $request->input('work_experience');
         $category->save();
-        return redirect('/freelancer/category')->with('flash_message', 'Category Added!');
+        return redirect('/freelancer/category')->with('success', 'Category Added');
     }
 
 
@@ -59,15 +58,14 @@ class CategoryController extends Controller
         $category->name_of_expertise = $request->input('name_of_expertise');
         $category->years_of_experience = $request->input('years_of_experience');
         $category->category = $request->input('category');
-        $category->work_experience = $request->input('work_experience');
         $category->save();
-        return redirect('/freelancer/category')->with('flash_message', 'Category Updated!');
+        return redirect('/freelancer/category')->with('success', 'Category Updated!');
     }
 
 
     public function destroy(string $id)
     {
         Category::destroy($id);
-        return redirect('/freelancer/category')->with('flash_message', 'category deleted!');
+        return redirect('/freelancer/category')->with('success', 'Category deleted!');
     }
 }

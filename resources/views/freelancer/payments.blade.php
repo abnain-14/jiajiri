@@ -2,6 +2,7 @@
 
 @section('content')
     <section class="col-md-9 pt-5 pb-5 mt-5 mx-auto">
+    @include('layouts.alerts')
         <div class="row">
 
             <div class="col-md-10">
