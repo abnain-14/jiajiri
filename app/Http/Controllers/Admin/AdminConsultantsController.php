@@ -72,7 +72,7 @@ extends Controller
         $user = User::find($id);
 
         if ($request->file('profile_pic')) {
-
+ 
             $fileNameWithExt = $request->file('profile_pic')->getClientOriginalName();
             $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
             $extension = $request->file('profile_pic')->getClientOriginalExtension();

@@ -62,16 +62,16 @@
                                     class="fas fa-dollar-sign" aria-hidden="true"></i></a>
                         </div>
                         <div class="col-md-7 col-7 text-right pr-5">
-                            <h5 class="ml-4 mt-4 mb-2 font-weight-bold">{{ count($consultants) }} </h5>
-                            <p class="font-small grey-text">New Consultants</p>
+                            <h5 class="ml-4 mt-4 mb-2 font-weight-bold">{{ count($payments) }} </h5>
+                            <p class="font-small grey-text">New Payments</p>
                         </div>
                     </div>
                     <div class="row my-3">
                         <div class="col-md-7 col-7 text-left pl-4">
-                            <p class="font-small font-up ml-4 font-weight-bold">Total Consultants</p>
+                            <p class="font-small font-up ml-4 font-weight-bold">Total Payments</p>
                         </div>
                         <div class="col-md-5 col-5 text-right pr-5">
-                            <p class="font-small grey-text">{{ count($consultants) }}</p>
+                            <p class="font-small grey-text">{{ count($payments) }}</p>
                         </div>
                     </div>
                 </div>

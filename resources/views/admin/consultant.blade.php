@@ -82,7 +82,7 @@
                                      <th class="th-lg"><strong>Email</strong>
                                      <th class="th-lg"><strong>Role</strong>
                                      <th class="th-lg"><strong>Job Requests</strong>
-                                     <th class="th-lg"><strong>Attended</strong>
+                                     <th class="th-lg"><strong>Applied</strong>
                                      </th>
                                  </tr>
                              </thead>
