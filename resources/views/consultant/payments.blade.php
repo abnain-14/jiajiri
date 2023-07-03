@@ -77,7 +77,7 @@
                                                     <p>Pay using the account number
                                                         <strong>{{ $freelancer->acc_number }}</strong> then
                                                         upload your
-                                                        receipt here, it will be reviewd as soon as posiible
+                                                        receipt here, it will be reviewed as soon as posiible
                                                     </p>
                                                     <div class="form-group">
 
@@ -87,7 +87,7 @@
                                                             @csrf
                                                             <input type="file" name="payslip" style="font-size:12px">
                                                             <button class="btn btn-sm btn-primary"
-                                                                type="submit">Upload</button>
+                                                                type="submit" required>Upload</button>
                                                         </form>
 
                                                     </div>

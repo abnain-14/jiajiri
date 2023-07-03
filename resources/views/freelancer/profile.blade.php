@@ -29,7 +29,7 @@
                             <li class="nav-item">
 
                                 <a class="nav-link dark-grey-text font-weight-bold" data-toggle="tab" href="#panel4"
-                                    role="tab">
+                                    role="tab" >
                                     </i>CV </a>
                             </li>
 
@@ -168,7 +168,7 @@
                                         enctype="multipart/form-data">
                                         @csrf
                                         <input type="file" name="cv" style="font-size:12px">
-                                        <button class="btn btn-sm btn-primary" type="submit">Upload</button>
+                                        <button class="btn btn-sm btn-primary" type="submit" >Upload</button>
                                     </form>
                                 </div>
 
