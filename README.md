@@ -8,42 +8,34 @@
 </p>
 Its just UI
 
-## How to Setup a Laravel Project You Cloned from Github.com
+## How to Setup the Project
 
-1. Clone GitHub repo for this project locally
-```
-git clone https://github.com/abnain-14/jiajiri.git
-```
-2. cd into your project
-```
-cd jiajiri
-```
-3. Install Composer Dependencies
+1. Install Composer Dependencies
 ```
 composer install
 ```
-4. Install NPM Dependencies
+2. Install NPM Dependencies
 ```
 npm install
 ```
-5. Create a copy of your .env file
+3. Create a copy of your .env file
 ```
 cp .env.example .env
 ```
-6. Generate an app encryption key
+4. Generate an app encryption key
 ```
 php artisan key:generate
 ```
-7. Create an empty database for our application; in our case the db name is "laravelecommerce"
+5. Create an empty database for our application; in our case the db name is "jiajiri"
 
-8. In the .env file, add database information to allow Laravel to connect to the database
-In the .env file fill in the DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, and DB_PASSWORD options to match the credentials of the database you just created.
+6. In the .env file, add database information to allow Laravel to connect to the database
+In the .env file fill in the DB_DATABASE = "jiajiri", to match with the database name.
 
-9. Migrate the database
+7. Migrate the database
 ```
 php artisan migrate
 ```
-10. Run the project
+8. Run the project
 ```
 php artisan serve
 ```
